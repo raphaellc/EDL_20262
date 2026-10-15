@@ -5,6 +5,8 @@ public class App {
         lista_circ.inserir(12);
         lista_circ.inserir(16);
         lista_circ.mostrarLista();
+        lista_circ.removerNo(1);
+        lista_circ.mostrarLista();
     }
     
 }

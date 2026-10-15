@@ -36,4 +36,21 @@ public class ListaCircular<T> {
             System.out.println("<->" + tail.getDado());
         }
     }   
+    public void removerNo(int posicao){
+        if (tamanho == 0){ return;}
+        else if(tamanho > 0 && posicao < tamanho){
+            NoDuplo<T> aux = head;
+            for (int i = 0; i < tamanho-1; i++){
+                if(i == posicao){
+                    aux.getProximo().setAnterior(aux.getAnterior());
+                    aux.getAnterior().setProximo(aux.getProximo());
+                    System.out.println(aux.getDado());
+                    return;
+                }else{
+                    aux = aux.getProximo();
+                }
+            }
+        }
+    }
 }
+ 
