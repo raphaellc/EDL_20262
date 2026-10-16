@@ -65,12 +65,13 @@ public class ListaCircular<T> {
                         anterior.setProximo(aux.getProximo());
                     }
                     System.out.println(aux.getDado());
-                    tamanho--;
-                    return;
+                   break;     
                 }else{
                     aux = aux.getProximo();
                 }
             }
+            tamanho--;
+            return;
         }
     }
 }
