@@ -38,13 +38,34 @@ public class ListaCircular<T> {
     }   
     public void removerNo(int posicao){
         if (tamanho == 0){ return;}
+        else if(tamanho == 1){
+            head = tail = null;
+            tamanho--;
+        }
         else if(tamanho > 0 && posicao < tamanho){
             NoDuplo<T> aux = head;
-            for (int i = 0; i < tamanho-1; i++){
+            for (int i = 0; i < tamanho; i++){
                 if(i == posicao){
-                    aux.getProximo().setAnterior(aux.getAnterior());
-                    aux.getAnterior().setProximo(aux.getProximo());
+                    var anterior = aux.getAnterior();
+                    var proximo = aux.getProximo();
+                    if(anterior == tail){
+                        //primeiro
+                        head.getProximo().setAnterior(tail);
+                        tail.setProximo(head.getProximo());
+                        head = head.getProximo();
+                    }
+                    else if(proximo == head){
+                        //último
+                        tail.getAnterior().setProximo(head);
+                        head.setAnterior(tail.getAnterior());
+                        tail = tail.getAnterior();        
+                    }
+                    else{
+                        proximo.setAnterior(aux.getAnterior());
+                        anterior.setProximo(aux.getProximo());
+                    }
                     System.out.println(aux.getDado());
+                    tamanho--;
                     return;
                 }else{
                     aux = aux.getProximo();
